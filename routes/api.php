@@ -31,5 +31,12 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'App\Http\Controllers']
     Route::patch('statusTicket/{id}', "StatusTicketController@update");
     Route::delete('statusTicket/{id}', 'StatusTicketController@remove');
 
+    /** Acompanhamento de Tickets */
+    Route::get('followTicket', 'FollowTicketsController@index');
+    Route::get('followTicketById/{id}', 'FollowTicketsController@show');
+    Route::post('followTicket', 'FollowTicketsController@new');
+    Route::patch('followTicket/{id}', "FollowTicketsController@update");
+    Route::delete('followTicket/{id}', 'FollowTicketsController@remove');
+
 });
 

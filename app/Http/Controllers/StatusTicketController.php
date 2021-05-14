@@ -28,6 +28,7 @@ class StatusTicketController extends Controller
         } catch (Exception $err) {
             return response(['status' => 'error', 'message' => $err->getMessage()], 500);
         }
+
     }
 
     public function update(Request $request, $id)
