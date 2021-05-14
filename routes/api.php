@@ -25,5 +25,11 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'App\Http\Controllers']
     Route::patch('tickets/{id}', "TicketsController@update");
     Route::delete('tickets/{id}', 'TicketsController@remove');
 
+    /** Status de Tickets */
+    Route::get('statusTicket', 'StatusTicketController@index');
+    Route::post('statusTicket', 'StatusTicketController@new');
+    Route::patch('statusTicket/{id}', "StatusTicketController@update");
+    Route::delete('statusTicket/{id}', 'StatusTicketController@remove');
+
 });
 
