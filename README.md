@@ -26,7 +26,6 @@ Link do Back-end: https://github.com/rochac2lee/helpme.git
 ```
 composer install
 php artisan key:generate
-
 ```
 
 [ Em Breve... ]
