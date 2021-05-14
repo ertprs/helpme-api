@@ -18,7 +18,7 @@ class AuthController extends Controller
 
             $id = $validation[0]->id;
 
-            $user = DB::select("SELECT id, client_id, first_name, permission_id, last_name, username, token from users WHERE id = '$id'");
+            $user = DB::select("SELECT id, first_name, permission_id, last_name, username, token from users WHERE id = '$id'");
 
             $day = date(strtotime('+3 hours'));
 
