@@ -20,10 +20,10 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'App\Http\Controllers']
     Route::get('permissions', "PermissionsController@index");
 
     /** Tickets */
-    Route::get('tickets', 'SitesComponentsController@index');
-    Route::post('tickets', 'SitesComponentsController@new');
-    Route::patch('tickets/{id}', "SitesComponentsController@update");
-    Route::delete('tickets/{id}', 'SitesComponentsController@remove');
+    Route::get('tickets', 'TicketsController@index');
+    Route::post('tickets', 'TicketsController@new');
+    Route::patch('tickets/{id}', "TicketsController@update");
+    Route::delete('tickets/{id}', 'TicketsController@remove');
 
 });
 
