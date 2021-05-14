@@ -17,7 +17,7 @@ class TokenBearer
     public function handle(Request $request, Closure $next)
     {
         $token = $request->header('Authorization');
-        if($token != "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzeXMiOiJoZWxwbWUiLCJkZXNjIjoiU2lzdGVtYSBkZSBHZXN0w6NvIGRlIENoYW1hZG9zIiwiY29tIjoiRW5jb2RlIERldiIsImRldiI6IkNsZWJlciBMZWUgZGEgUm9jaGEiLCJ0YXJnZXQiOiJUaWNrZXRzIiwicHNzIjoiZGV2RW5jTGVlODQ4NjI1QDIwMjEhfiJ9.vr_fR8zPw194nlvjntglILAYOgPALjPRPA794eZ6yKc") {
+        if($token != "Bearer ".env("JWT_SECRET")) {
             return response()->json(['message' => 'Bearer Token not found'], 401);
         }
         return $next($request);

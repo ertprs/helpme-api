@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TicketsController extends Controller
 {
 
     public function index() {
-        $tickets = Ticket::all();
+
+        $tickets = DB::select("SELECT t.id, t.user_id, u.first_name, u.last_name, t.status_id, st.status, t.title, t.description
+                               FROM tickets t
+                               LEFT JOIN users u ON t.user_id = u.id
+                               LEFT JOIN status_tickets st ON t.status_id = st.id
+                               ORDER BY t.id DESC");
 
         return response(['total' => sizeof($tickets), 'data' => $tickets], 200);
     }
