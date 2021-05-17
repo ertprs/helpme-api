@@ -19,6 +19,12 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'App\Http\Controllers']
     /** Permissões */
     Route::get('permissions', "PermissionsController@index");
 
+    /** Clientes */
+    Route::get('clients', "ClientsController@index");
+    Route::post('clients', "ClientsController@new");
+    Route::put('clients/{id}', "ClientsController@update");
+    Route::delete('clients/{id}', "ClientsController@remove");
+
     /** Tickets */
     Route::get('tickets', 'TicketsController@index');
     Route::post('tickets', 'TicketsController@new');
@@ -40,6 +46,4 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'App\Http\Controllers']
 
     /** Resumos para o dashboard */
     Route::get('dashboard', 'DashboardController@dashboard');
-
 });
-
