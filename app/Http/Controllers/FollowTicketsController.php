@@ -40,12 +40,20 @@ class FollowTicketsController extends Controller
         if ($validation) {
 
             try {
+                $userId = $request->user_id;
+                $ticketId = $request->ticket_id;
+                $statusId = $request->status_id;
+                $description = $request->description;
+
                 $followTicket = FollowTicket::create([
-                    'user_id' => $request->user_id,
-                    'ticket_id' => $request->ticket_id,
-                    'status_id' => $request->status_id,
-                    'description' => $request->description
+                    'user_id' => $userId,
+                    'ticket_id' => $ticketId,
+                    'status_id' => $statusId,
+                    'description' => $description
                 ]);
+
+                //Atualiza o ticket com o novo status
+                DB::update("UPDATE tickets SET status_id = $statusId WHERE id = $ticketId");
 
                 return response(['status' => 'success', 'message' => 'Acompanhamento criado com sucesso!', 'data' => $followTicket], 201);
             } catch (Exception $err) {
