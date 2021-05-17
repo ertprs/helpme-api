@@ -11,7 +11,7 @@ class StatusTicketController extends Controller
 {
     public function index()
     {
-        $statusTicket = StatusTicket::all()->sortBy("id");
+        $statusTicket = DB::select("SELECT * FROM status_tickets ORDER BY id ASC");
 
         return response(['total' => sizeof($statusTicket), 'data' => $statusTicket], 200);
     }

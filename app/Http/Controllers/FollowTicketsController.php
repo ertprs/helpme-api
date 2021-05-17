@@ -18,11 +18,14 @@ class FollowTicketsController extends Controller
     }
 
     public function show($id) {
-        $followTicket = DB::select("SELECT
-                                 *
-                               FROM follow_tickets
-                               WHERE ticket_id = $id
-                               ORDER BY id ASC");
+
+        $followTicket = DB::select("SELECT ft.id, ft.user_id, u.username, u.first_name, u.last_name, ft.status_id, st.status, t.title ticket_title,  ft.description, to_char(ft.created_at, 'DD/MM/YYYY HH24:MI:SS') created_at
+                               FROM follow_tickets ft
+                               LEFT JOIN users u ON ft.user_id = u.id
+                               LEFT JOIN tickets t ON ft.ticket_id = t.id
+                               LEFT JOIN status_tickets st ON ft.status_id = st.id
+                               WHERE ft.ticket_id = $id
+                               ORDER BY ft.id ASC");
 
         return response(['total' => sizeof($followTicket),'data' => $followTicket], 200);
     }
