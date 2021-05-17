@@ -38,5 +38,8 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'App\Http\Controllers']
     Route::patch('followTicket/{id}', "FollowTicketsController@update");
     Route::delete('followTicket/{id}', 'FollowTicketsController@remove');
 
+    /** Resumos para o dashboard */
+    Route::get('dashboard', 'DashboardController@dashboard');
+
 });
 
