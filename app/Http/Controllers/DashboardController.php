@@ -42,7 +42,7 @@ class DashboardController extends Controller
             'ticketsFinish' => sizeOf($ticketsFinish),
         ];
 
-        return response($result, 200);
+        return response(['data' => $result], 200);
     }
 
 
