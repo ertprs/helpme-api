@@ -47,6 +47,7 @@ class UsersController extends Controller
             $jwt_token = "$header.$payload.$signature";
 
             $user = User::create([
+                "client_id" => $request->client_id,
                 "permission_id" => $request->permission_id,
                 "first_name" => $request->first_name,
                 "last_name" => $request->last_name,
@@ -84,6 +85,7 @@ class UsersController extends Controller
                 }
 
                 $user->update([
+                    "client_id" => $request->client_id,
                     "permission_id" => $request->permission_id,
                     "first_name" => $request->first_name,
                     "last_name" => $request->last_name,

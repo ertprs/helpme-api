@@ -17,13 +17,13 @@ class PermissionsTableSeeder extends Seeder
         $permissions = array([
             "permission" => "Administrador",
             "status" => true
-        ],[
+        ], [
             "permission" => "Cliente",
             "status" => true
         ]);
 
-            for ($i=0; $i < sizeOf($permissions); $i++) {
-                DB::table('permissions')->insert($permissions[$i]);
-            }
+        for ($i = 0; $i < sizeOf($permissions); $i++) {
+            DB::table('permissions')->insert($permissions[$i]);
+        }
     }
 }
