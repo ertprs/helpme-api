@@ -12,9 +12,10 @@ class TicketsController extends Controller
 
     public function index() {
 
-        $tickets = DB::select("SELECT t.id, t.user_id, u.first_name, u.last_name, t.status_id, st.status, t.title, t.description, to_char(t.created_at, 'DD/MM/YYYY HH24:MI:SS') created_at
+        $tickets = DB::select("SELECT t.id, t.user_id, u.first_name, u.last_name, t.client_id, c.client_name, t.status_id, st.status, t.title, t.description, to_char(t.created_at, 'DD/MM/YYYY HH24:MI:SS') created_at
                                FROM tickets t
                                LEFT JOIN users u ON t.user_id = u.id
+                               LEFT JOIN clients c ON t.client_id = c.id
                                LEFT JOIN status_tickets st ON t.status_id = st.id
                                ORDER BY t.id DESC");
 
@@ -26,6 +27,7 @@ class TicketsController extends Controller
         try {
             $ticket = Ticket::create([
                 'user_id' => $request->user_id,
+                'client_id' => $request->client_id,
                 'status_id' => $request->status_id,
                 'title' => $request->title,
                 'description' => $request->description

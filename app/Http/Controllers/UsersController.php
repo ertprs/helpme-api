@@ -41,7 +41,7 @@ class UsersController extends Controller
             $payload = json_encode($payload);
             $payload = base64_encode($payload);
 
-            $signature = hash_hmac('sha256', "$header.$payload", 'OGSI2021Encode#D3v', true);
+            $signature = hash_hmac('sha256', "$header.$payload", 'devEncLee848625@2021!~', true);
             $signature = base64_encode($signature);
 
             $jwt_token = "$header.$payload.$signature";

@@ -13,6 +13,8 @@ class CreateStatusTicketsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('status_tickets');
+
         Schema::create('status_tickets', function (Blueprint $table) {
             $table->id();
             $table->string("status");
@@ -27,6 +29,6 @@ class CreateStatusTicketsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('status_ticket');
+        Schema::dropIfExists('status_tickets');
     }
 }
