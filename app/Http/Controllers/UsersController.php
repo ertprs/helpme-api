@@ -11,7 +11,11 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users =  DB::select("SELECT u.first_name, u.last_name, u.client_id, c.first_name client_first_name, c.last_name client_last_name, u.permission_id, p.permission, u.username, u.email, u.status, u.notification, u.token, u.api_token
+                    FROM users u
+                    LEFT JOIN clients c ON u.client_id = c.id
+                    INNER JOIN permissions p ON u.permission_id = p.id
+                    ORDER BY u.first_name ASC");
 
         return response(['data' => $users], 200);
     }
