@@ -41,7 +41,7 @@ class UsersTableSeeder extends Seeder
             "last_name" => "Helpdesk",
             "username" => "admin",
             "email" => "admin@example.com",
-            "password" => "admin123",
+            "password" => md5("admin123"),
             "status" => "true",
             "notification" => "true",
             "token" => $jwt_token,
