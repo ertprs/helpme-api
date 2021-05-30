@@ -17,7 +17,7 @@ class DashboardController extends Controller
                                LEFT JOIN users u ON t.user_id = u.id
                                LEFT JOIN clients c ON t.client_id = c.id
                                LEFT JOIN status_tickets st ON t.status_id = st.id
-                               WHERE status_id != 4 and status_id != 5");
+                               WHERE t.status_id = 1");
 
         /**
          * Retorna a quantidade de chamados abertos no mês atual
@@ -27,7 +27,7 @@ class DashboardController extends Controller
                                LEFT JOIN users u ON t.user_id = u.id
                                LEFT JOIN clients c ON t.client_id = c.id
                                LEFT JOIN status_tickets st ON t.status_id = st.id
-                               WHERE EXTRACT(MONTH FROM created_at) = EXTRACT(MONTH FROM CURRENT_DATE)");
+                               WHERE EXTRACT(MONTH FROM t.created_at) = EXTRACT(MONTH FROM CURRENT_DATE)");
 
         /**
          * Retorna a quantidade de tickets pendentes
@@ -37,7 +37,7 @@ class DashboardController extends Controller
                                LEFT JOIN users u ON t.user_id = u.id
                                LEFT JOIN clients c ON t.client_id = c.id
                                LEFT JOIN status_tickets st ON t.status_id = st.id
-                               WHERE status_id = 3");
+                               WHERE t.status_id = 3");
 
         /**
          * Retorna a quantidade de tickets em andamento
@@ -47,7 +47,7 @@ class DashboardController extends Controller
                                LEFT JOIN users u ON t.user_id = u.id
                                LEFT JOIN clients c ON t.client_id = c.id
                                LEFT JOIN status_tickets st ON t.status_id = st.id
-                               WHERE status_id = 2");
+                               WHERE t.status_id = 2");
 
         /**
          * Retorna a quantidade de tickets solucionados
@@ -57,7 +57,7 @@ class DashboardController extends Controller
                                LEFT JOIN users u ON t.user_id = u.id
                                LEFT JOIN clients c ON t.client_id = c.id
                                LEFT JOIN status_tickets st ON t.status_id = st.id
-                               WHERE status_id = 4");
+                               WHERE t.status_id = 4");
 
         $result = [
             'ticketsOpen' => [
