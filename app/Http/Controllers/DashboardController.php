@@ -32,14 +32,29 @@ class DashboardController extends Controller
         /**
          * Retorna a quantidade de tickets solucionados
          */
-        $ticketsFinish = DB::select("SELECT * FROM tickets WHERE status_id = 5");
+        $ticketsFinish = DB::select("SELECT * FROM tickets WHERE status_id = 4");
 
         $result = [
-            'ticketsOpen' => sizeOf($ticketsOpen),
-            'ticketsInMonth' => sizeOf($ticketsInMonth),
-            'ticketsPending' => sizeOf($ticketsPending),
-            'ticketsInProgress' => sizeOf($ticketsInProgress),
-            'ticketsFinish' => sizeOf($ticketsFinish),
+            'ticketsOpen' => [
+                'qtd' => sizeOf($ticketsOpen),
+                'data' => $ticketsOpen,
+            ],
+            'ticketsInMonth' => [
+                'qtd' => sizeOf($ticketsInMonth),
+                'data' => $ticketsInMonth,
+            ],
+            'ticketsPending' => [
+                'qtd' => sizeOf($ticketsPending),
+                'data' => $ticketsPending,
+            ],
+            'ticketsInProgress' => [
+                'qtd' => sizeOf($ticketsInProgress),
+                'data' => $ticketsInProgress,
+            ],
+            'ticketsFinish' => [
+                'qtd' => sizeOf($ticketsFinish),
+                'data' => $ticketsFinish,
+            ]
         ];
 
         return response(['data' => $result], 200);
