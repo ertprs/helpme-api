@@ -44,6 +44,14 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'App\Http\Controllers']
     Route::patch('followTicket/{id}', "FollowTicketsController@update");
     Route::delete('followTicket/{id}', 'FollowTicketsController@remove');
 
+    /** Usuários */
+    Route::get('notifications/{id}', "NotificationsController@show");
+    Route::get('notifications/allUnreaded/{id}', "NotificationsController@showUnreaded");
+    Route::post('notifications/{id}', "NotificationsController@new");
+    Route::get('notifications/readAll/{id}', "NotificationsController@readAll");
+    Route::patch('notifications/read/{id}', "NotificationsController@read");
+    Route::patch('notifications/unread/{id}', "NotificationsController@unread");
+
     /** Resumos para o dashboard */
     Route::get('dashboard', 'DashboardController@dashboard');
 });
