@@ -17,7 +17,7 @@ class CreateTicketsTable extends Migration
             $table->id();
             $table->integer("user_id")->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer("client_id")->unsigned();
+            $table->integer("client_id")->unsigned()->nullable();
             $table->foreign('client_id')->references('id')->on('clients');
             $table->integer("status_id");
             $table->foreign('status_id')->references('id')->on('status_tickets');
