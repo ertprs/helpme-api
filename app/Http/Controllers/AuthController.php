@@ -9,16 +9,16 @@ class AuthController extends Controller
 {
     public function Login(Request $request) {
 
-        $username = $request->username;
+        $usuario = $request->usuario;
         $password = md5($request->password);
 
-        $validation = DB::select("SELECT id, username, password, token from users WHERE (username = '$username' or email = '$username') and password = '$password'");
+        $validation = DB::select("SELECT id, usuario, password, token from agentes WHERE (usuario = '$usuario') and password = '$password'");
 
         if ($validation) {
 
             $id = $validation[0]->id;
 
-            $user = DB::select("SELECT id, first_name, permission_id, last_name, username, token from users WHERE id = '$id'");
+            $user = DB::select("SELECT id, nome_agente, usuario, token from agentes WHERE id = '$id'");
 
             $day = date(strtotime('+3 hours'));
 

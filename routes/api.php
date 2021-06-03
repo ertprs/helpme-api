@@ -4,20 +4,13 @@ use Illuminate\Http\Request as Request;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
-    Route::post('users', "UsersController@new");
-    Route::post('permissions', "PermissionsController@new");
-});
-
-Route::group(['middleware' => 'auth:api', 'namespace' => 'App\Http\Controllers'], function () {
 
     /** Usuários */
-    Route::get('users', "UsersController@index");
+    Route::post('agentes', "AgentesController@new");
+    Route::get('agentes', "AgentesController@index");
     Route::post('auth/login', "AuthController@login");
-    Route::put('users/{id}', "UsersController@update");
-    Route::delete('users/{id}', "UsersController@remove");
-
-    /** Permissões */
-    Route::get('permissions', "PermissionsController@index");
+    Route::put('agentes/{id}', "AgentesController@update");
+    Route::delete('agentes/{id}', "AgentesController@remove");
 
     /** Clientes */
     Route::get('clients', "ClientsController@index");
