@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UsersTableSeeder extends Seeder
+class AgentesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -22,9 +22,9 @@ class UsersTableSeeder extends Seeder
         $header = base64_encode($header);
 
         $payload = [
-            'iss' => 'helpme',
+            'iss' => 'cyberdenuncie',
             'name' => "admin",
-            'email' => "admin@example.com"
+            'email' => "admin@cyberdenuncie.com.br"
         ];
         $payload = json_encode($payload);
         $payload = base64_encode($payload);
@@ -35,19 +35,14 @@ class UsersTableSeeder extends Seeder
         $jwt_token = "$header.$payload.$signature";
 
         $api_token = env('JWT_SECRET');
-        $user = [
-            "permission_id" => 1,
-            "first_name" => "Admin",
-            "last_name" => "Helpdesk",
-            "username" => "admin",
-            "email" => "admin@example.com",
+        $agente = [
+            "usuario" => "admin",
+            "nome_agente" => "Administrador",
             "password" => md5("admin123"),
-            "status" => "true",
-            "notification" => "true",
             "token" => $jwt_token,
             "api_token" => $api_token
         ];
 
-        DB::table('users')->insert($user);
+        DB::table('agentes')->insert($agente);
     }
 }
