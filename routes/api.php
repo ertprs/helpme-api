@@ -12,30 +12,24 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::put('agentes/{id}', "AgentesController@update");
     Route::delete('agentes/{id}', "AgentesController@remove");
 
-    /** Clientes */
-    Route::get('clients', "ClientsController@index");
-    Route::post('clients', "ClientsController@new");
-    Route::put('clients/{id}', "ClientsController@update");
-    Route::delete('clients/{id}', "ClientsController@remove");
+    /** Status de Ocorrências */
+    Route::get('statusOcorrencias', 'StatusOcorrenciaController@index');
+    Route::post('statusOcorrencias', 'StatusOcorrenciaController@new');
+    Route::patch('statusOcorrencias/{id}', "StatusOcorrenciaController@update");
+    Route::delete('statusOcorrencias/{id}', 'StatusOcorrenciaController@remove');
 
-    /** Tickets */
-    Route::get('tickets', 'TicketsController@index');
-    Route::post('tickets', 'TicketsController@new');
-    Route::patch('tickets/{id}', "TicketsController@update");
-    Route::delete('tickets/{id}', 'TicketsController@remove');
+    /** Denúncias */
+    Route::get('denuncias', 'TicketsController@index');
+    Route::post('denuncias', 'TicketsController@new');
+    Route::patch('denuncias/{id}', "TicketsController@update");
+    Route::delete('denuncias/{id}', 'TicketsController@remove');
 
-    /** Status de Tickets */
-    Route::get('statusTicket', 'StatusTicketController@index');
-    Route::post('statusTicket', 'StatusTicketController@new');
-    Route::patch('statusTicket/{id}', "StatusTicketController@update");
-    Route::delete('statusTicket/{id}', 'StatusTicketController@remove');
-
-    /** Acompanhamento de Tickets */
-    Route::get('followTicket', 'FollowTicketsController@index');
-    Route::get('followTicketById/{id}', 'FollowTicketsController@show');
-    Route::post('followTicket', 'FollowTicketsController@new');
-    Route::patch('followTicket/{id}', "FollowTicketsController@update");
-    Route::delete('followTicket/{id}', 'FollowTicketsController@remove');
+    /** Acompanhamento de Denúncias */
+    Route::get('denunciasAcompanhamento', 'DenunciasAcompanhamentoController@index');
+    Route::get('denunciasAcompanhamentoById/{id}', 'DenunciasAcompanhamentoController@show');
+    Route::post('denunciasAcompanhamento', 'DenunciasAcompanhamentoController@new');
+    Route::patch('denunciasAcompanhamento/{id}', "DenunciasAcompanhamentoController@update");
+    Route::delete('denunciasAcompanhamento/{id}', 'DenunciasAcompanhamentoController@remove');
 
     /** Usuários */
     Route::get('notifications/{id}', "NotificationsController@show");

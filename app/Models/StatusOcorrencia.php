@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ticket extends Model
+class StatusOcorrencia extends Model
 {
     use HasFactory;
 
@@ -15,11 +15,9 @@ class Ticket extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id',
-        'client_id',
-        'status_id',
-        'title',
-        'description',
+        'id',
+        'status',
+        'descricao'
     ];
 
 }
